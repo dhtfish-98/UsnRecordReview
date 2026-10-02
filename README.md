@@ -1,5 +1,7 @@
 # UsnRecordReview
 
+New implementation author: **dhtfish98**. Current package version: **1.0.2**.
+
 Detects incomplete change journal evidence and keeps unresolved v4 continuation evidence OPEN.
 
 ## Supported project scope
