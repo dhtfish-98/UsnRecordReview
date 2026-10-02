@@ -19,7 +19,24 @@ def sample(v=2, usn=10):
     return bytes(d)
 
 
+def extent_sample(count, usn=10):
+    data = bytearray(sample(4, usn)[:64])
+    struct.pack_into("<I", data, 0, 64 + 16 * count)
+    struct.pack_into("<H", data, 60, count)
+    data.extend(struct.pack("<qq", 0, 1) * count)
+    return bytes(data)
+
+
 class Tests(unittest.TestCase):
+    def test_extent_budget_across_records(self):
+        from unittest.mock import patch
+        import usnrecordreview.core as core
+
+        with patch.object(core, "MAX_RECORDS", 3):
+            self.assertEqual(inspect(extent_sample(2) + extent_sample(1, 11))["status"], "PASS")
+            report = inspect(extent_sample(2) + extent_sample(2, 11))
+            self.assertIn("aggregate_extent_limit", report["findings"])
+            self.assertEqual(report["status"], "FAIL")
     def test_versions(self):
         for v in (2, 3, 4):
             self.assertEqual(inspect(sample(v))["status"], "PASS")

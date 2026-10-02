@@ -61,9 +61,11 @@ def inspect(data):
 
 
 def read_local(path):
-    fd = os.open(
-        path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
-    )
+    nofollow = getattr(os, "O_NOFOLLOW", None)
+    nonblock = getattr(os, "O_NONBLOCK", None)
+    if not isinstance(nofollow, int) or not nofollow or not isinstance(nonblock, int) or not nonblock:
+        raise Unsupported("safe_local_read_flags_unavailable")
+    fd = os.open(path, os.O_RDONLY | nofollow | nonblock)
     try:
         info = os.fstat(fd)
         require(stat.S_ISREG(info.st_mode), "regular_file_required")
@@ -90,6 +92,8 @@ def main():
     args = parser.parse_args()
     try:
         report = inspect(read_local(args.input))
+    except Unsupported as exc:
+        report = {"status": "OPEN", "complete": False, "findings": [str(exc)]}
     except (OSError, Invalid):
         report = {
             "status": "FAIL",
@@ -103,6 +107,7 @@ def main():
 def analyze(data):
     require(len(data) > 0, "empty_journal")
     records, offset, last_usn = [], 0, None
+    extent_entries = 0
     while offset < len(data):
         require(len(records) < MAX_RECORDS, "record_limit")
         if data[offset : offset + 4] == b"\0" * 4:
@@ -157,6 +162,8 @@ def analyze(data):
             )
             if extent_size != 16:
                 raise Unsupported("unsupported_extent_size")
+            extent_entries += count
+            require(extent_entries <= MAX_RECORDS, "aggregate_extent_limit")
             extents = []
             for i in range(count):
                 pos, size = unpack("<qq", raw, 64 + i * extent_size)

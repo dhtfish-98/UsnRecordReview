@@ -65,10 +65,11 @@
     },
     {
       "path": "src/usnrecordreview/core.py",
-      "sha256": "83f96fbf140b0b5c37b6b1ec243d55003eb433410c963c4de7d9bf3f630596be",
-      "bytes": 6534
+      "sha256": "d1538b7a8e3fc26aca12515c7863f4d7b0e325d0b089ffcdd4e8cf34e1df6ac4",
+      "bytes": 6986
     }
   ],
   "source_review": "Upstream UsnJrnl handles file-like streams and optional NTFS/MFT reconstruction. The new stream validator includes v2/v3/v4 envelopes and excludes volume/path reconstruction.",
-  "review_boundary": "Complete new runtime review; selected upstream format/entry-point review. Unselected upstream platform code is not claimed audited or rewritten."
+  "review_boundary": "Complete new runtime review; selected upstream format/entry-point review. Unselected upstream platform code is not claimed audited or rewritten.",
+  "current_reaudit": "REAUDIT_20261002.json"
 }

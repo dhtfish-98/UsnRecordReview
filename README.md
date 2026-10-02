@@ -15,11 +15,11 @@ python -m pip install .
 usnrecordreview examples/valid.bin
 ```
 
-Supply one local regular file. No symlinks or automatic artifact discovery are accepted. The CLI prints JSON; exit 0 means supported checks completed, exit 1 means a structural failure, and exit 2 means unsupported/incomplete analysis. Each successful read includes the input SHA-256 and byte count. Paths, contents, report messages and identities are suppressed. The input is never modified.
+Supply one local regular file. The file CLI requires OS `O_NOFOLLOW` and `O_NONBLOCK` support; missing safety flags return OPEN before opening the path. This file-reader contract was verified on macOS/Linux; native Windows file reading is outside the validated profile. No symlinks or automatic artifact discovery are accepted. The CLI prints JSON; exit 0 means supported checks completed, exit 1 means a structural failure, and exit 2 means unsupported/incomplete analysis. Each successful read includes the input SHA-256 and byte count. Paths, contents, report messages and identities are suppressed. The input is never modified.
 
 ## Explicit limits and boundaries
 
-Input limit: 16 MiB. Record limit: 100,000. Additional format-specific limits are enforced in the source.
+Input limit: 16 MiB. Record limit: 100,000. V4 extent entries also have a separate aggregate limit of 100,000 across the supplied stream. This is a bounded tool profile, not an NTFS format limit. Additional format-specific limits are enforced in the source.
 
 Excluded capabilities: NTFS volume access, MFT resolution, deleted-record carving, path reconstruction and cause/tampering attribution.
 
