@@ -1,0 +1,1 @@
+valid.bin, invalid.bin and unsupported.bin (when present) are synthetic declarations; no private acquired evidence or executable sample is included. USN public v2/v4 fixtures are reproduced from fixed upstream tests/test_usnjrnl.py; original AGPL provenance is preserved. They contain a public test filename and record identifiers; analyzer output suppresses the filename.

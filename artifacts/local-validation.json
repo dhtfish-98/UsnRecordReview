@@ -1,0 +1,14 @@
+{
+  "project": "UsnRecordReview",
+  "status": "PASS",
+  "test_count": 17,
+  "wheel": "usnrecordreview-1.0.0-py3-none-any.whl",
+  "wheel_sha256": "25c7d79e1f4c6dbaf0a2c6381943b4fe6b5d73069f1de0ba128e76fe0d70a3b7",
+  "verification": "Local supported and malformed input tests, wheel build, separate install, imported package origin and CLI checks",
+  "reproduction": [
+    "python -m pip install .",
+    "python -m unittest discover -s tests -v",
+    "python -m pip wheel --no-deps --wheel-dir artifacts ."
+  ],
+  "limits": "Point-in-time engineering evidence only; CVP qualification and approval remain OPEN"
+}

@@ -1,0 +1,74 @@
+{
+  "source_repo": "fox-it/dissect.ntfs",
+  "source_commit": "7f021dd1182eb6f9b6a2dbd19cf2e29143ea654d",
+  "scope": "Extracted USN stream versions 2, 3 and 4: aligned record/page padding, bounded name offsets and UTF-16, signed nonnegative USNs, sequence ordering, v4 extent sizes/ranges and continuation declarations.",
+  "license": "AGPL-3.0-or-later",
+  "source_files": [
+    {
+      "path": "LICENSE",
+      "bytes": 34523,
+      "lines": 661,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "url": "https://raw.githubusercontent.com/fox-it/dissect.ntfs/7f021dd1182eb6f9b6a2dbd19cf2e29143ea654d/LICENSE"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1942,
+      "lines": 55,
+      "sha256": "2534967af60e96676ec2db06865729012a450ae0f191f736044123b8323bd1b7",
+      "url": "https://raw.githubusercontent.com/fox-it/dissect.ntfs/7f021dd1182eb6f9b6a2dbd19cf2e29143ea654d/README.md"
+    },
+    {
+      "path": "dissect/ntfs/c_ntfs.py",
+      "bytes": 18884,
+      "lines": 623,
+      "sha256": "82a52dc147ffc7540876c7ad498b83a1232f767475f81d610a419ad3f25a5e7e",
+      "url": "https://raw.githubusercontent.com/fox-it/dissect.ntfs/7f021dd1182eb6f9b6a2dbd19cf2e29143ea654d/dissect/ntfs/c_ntfs.py"
+    },
+    {
+      "path": "dissect/ntfs/usnjrnl.py",
+      "bytes": 4715,
+      "lines": 144,
+      "sha256": "b9df566f38f9a270bdeb26df99964efc4bb1c1cfd7eb48566d50c8828bf73fd5",
+      "url": "https://raw.githubusercontent.com/fox-it/dissect.ntfs/7f021dd1182eb6f9b6a2dbd19cf2e29143ea654d/dissect/ntfs/usnjrnl.py"
+    },
+    {
+      "path": "dissect/ntfs/util.py",
+      "bytes": 10835,
+      "lines": 324,
+      "sha256": "1cfd76049fb1086010a96b349a7b1831c056359f64e7e0722241a37be76fe6c1",
+      "url": "https://raw.githubusercontent.com/fox-it/dissect.ntfs/7f021dd1182eb6f9b6a2dbd19cf2e29143ea654d/dissect/ntfs/util.py"
+    },
+    {
+      "path": "tests/test_usnjrnl.py",
+      "bytes": 984,
+      "lines": 28,
+      "sha256": "6dcfb64c8c2bb6e7dcdae53f5734da2553780e98e8a3f8526890ed3a44dd83bf",
+      "url": "https://raw.githubusercontent.com/fox-it/dissect.ntfs/7f021dd1182eb6f9b6a2dbd19cf2e29143ea654d/tests/test_usnjrnl.py"
+    }
+  ],
+  "new_runtime_files": [
+    "src/usnrecordreview/__init__.py",
+    "src/usnrecordreview/__main__.py",
+    "src/usnrecordreview/core.py"
+  ],
+  "implementation_files": [
+    {
+      "path": "src/usnrecordreview/__init__.py",
+      "sha256": "38582950d26e35b221eb5e109dc3283861d1300bcd8b1a0bef233bc8ff76a761",
+      "bytes": 49
+    },
+    {
+      "path": "src/usnrecordreview/__main__.py",
+      "sha256": "889f673c2145e28095264339dbb3be024859a0bd7242435c479850567be2fd49",
+      "bytes": 49
+    },
+    {
+      "path": "src/usnrecordreview/core.py",
+      "sha256": "83f96fbf140b0b5c37b6b1ec243d55003eb433410c963c4de7d9bf3f630596be",
+      "bytes": 6534
+    }
+  ],
+  "source_review": "Upstream UsnJrnl handles file-like streams and optional NTFS/MFT reconstruction. The new stream validator includes v2/v3/v4 envelopes and excludes volume/path reconstruction.",
+  "review_boundary": "Complete new runtime review; selected upstream format/entry-point review. Unselected upstream platform code is not claimed audited or rewritten."
+}
