@@ -1,0 +1,35 @@
+{
+  "schema": "project-build-layout.v1",
+  "project": "UsnRecordReview",
+  "author": "dhtfish98",
+  "kind": "python",
+  "base_public_commit": "73bef9038689414dbbad08622be29cc68e6b83e6",
+  "restored_inputs": [
+    {
+      "original": "LICENSE",
+      "stored": "项目文档/LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "original": "ORIGIN.md",
+      "stored": "项目文档/ORIGIN.md",
+      "sha256": "660838a137eb0850b70465e08998c5bceb832d4e6f928b90011002bf9a729e44"
+    },
+    {
+      "original": "README.md",
+      "stored": "项目文档/README.md",
+      "sha256": "d63811efa7a59208dd5e7116e34bba0ad3c80d1594ec251ef67ea17863dfc4c8"
+    },
+    {
+      "original": "VALIDATION.md",
+      "stored": "项目文档/VALIDATION.md",
+      "sha256": "c89591bcad09c3f6fe906e1eaf7f93a63796b9dbadd5fa79dc3dbe5eea9bbcce"
+    },
+    {
+      "original": "examples/README.md",
+      "stored": "项目文档/examples/README.md",
+      "sha256": "f01ae1c923302f0c43c909feb7a0a7627ff4d0778133e8536ec14730e57017c8"
+    }
+  ],
+  "platform_entries": []
+}
